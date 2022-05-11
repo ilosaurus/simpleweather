@@ -20,11 +20,11 @@ router.post('/get_weather', async function (req,res) {
     console.log(weather);
     if(weather.cod == '404' && weather.main == undefined) {
       res.render('index', {weather: null, error: 'Error: Unknown city'});
-      console.log(${OWM_API_KEY});
+      console.log(OWM_API_KEY);
     }
     else if (weather.cod == '401' && weather.main == undefined) {
       res.render('index', {weather: null, error: 'Error: Invalid API Key. Please see http://openweathermap.org/faq#error401 for more info.'});
-      console.log(${OWM_API_KEY});
+      console.log(OWM_API_KEY);
     }
     else {
       let unit_hex = (UNITS == 'imperial') ? '&#8457' : '&#8451';
@@ -33,7 +33,7 @@ router.post('/get_weather', async function (req,res) {
   }
   catch (err) {
     console.log(err);
-    console.log(${OWM_API_KEY});
+    console.log(OWM_API_KEY);
     res.render('index', {weather: null, error: 'Error: Unable to invoke OpenWeatherMap API'});
   }
 
